@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    /* Add your CSS styles here */
+    /* Body styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+
+    /* Header styles */
+    header {
+        background-color: #3498db;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    /* Cyberbullying counts section styles */
+    .cyberbullying-counts {
+        background-color: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* Complaints section styles */
+    .complaints-section {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Table styles */
+    #complaints-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #complaints-table th,
+    #complaints-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    #complaints-table th {
+        background-color: #f2f2f2;
+    }
+
+    /* Card styles */
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-bottom: 20px;
+        flex: 1 0 calc(20% - 20px);
+    }
+
+    .card h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    /* Complaints Table Styles */
+    .complaints-section {
+        margin-top: 30px;
+    }
+
+    #complaints-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #complaints-table th,
+    #complaints-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    #complaints-table th {
+        background-color: #f2f2f2;
+    }
+
+    /* Form Styles */
+    #add-complaint-section {
+        margin-top: 30px;
+    }
+
+    #add-complaint-form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    #add-complaint-form label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    #add-complaint-form input[type="text"],
+    #add-complaint-form input[type="email"],
+    #add-complaint-form textarea,
+    #add-complaint-form select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    #add-complaint-form button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    #add-complaint-form button:hover {
+        background-color: #2980b9;
+    }
+
+    #toggle-add-complaint-section {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    #toggle-add-complaint-section:hover {
+        background-color: #2980b9;
+    }
+
+       /* Navigation Bar */
+       ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #3498db;
+            display: flex;
+        }
+
+        li {
+            flex-grow: 1;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        li a:hover {
+            background-color: #2980b9;
+        }
+
+        ul.navbar {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #3498db;
+            display: flex;
+            justify-content: space-evenly; /* Adjusted to evenly distribute navbar items */
+            align-items: center; /* Vertically center items */
+        }
+
+        li.nav-item {
+            flex-grow: 1;
+        }
+
+        li.nav-item a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        li.nav-item a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Add this style for responsiveness */
+        @media screen and (max-width: 600px) {
+            li.nav-item {
+                flex-grow: 0; /* Adjusted for small screens */
+            }
+
+            li.nav-item a {
+                padding: 15px 10px; /* Adjusted padding for small screens */
+            }
+        }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- <link rel="stylesheet" href="adminstyle.css"> -->
+</head>
+
+<body>
+    <ul class="navbar">
+        <li style="font-style: italic; color:darkblue;" class="nav-item"><a
+                href="{{ url_for('index') }}">CyberStalking</a></li>
+        <li class="nav-item"><a href="{{ url_for('home') }}">Predict cyber bullying</a></li>
+        <li class="nav-item"><a href="{{ url_for('complaint') }}">Complaints</a></li>
+        <li class="nav-item"><a href="{{ url_for('contact') }}">Contact</a></li>
+        <li class="nav-item"><a href="{{ url_for('about') }}">About</a></li>
+        {% if session.get('is_authenticated') %}
+        <li class="nav-item"><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+        <li class="nav-item"><a href="{{ url_for('login') }}">Login/Register</a></li>
+        {% endif %}
+    </ul>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+    <section class="cyberbullying-counts">
+        <div class="container" id="cyberbullying-counts-cards">
+            <!-- Cyberbullying counts will be dynamically added here -->
+        </div>
+    </section>
+    <section class="complaints-section">
+        <h2>Complaints</h2>
+        <table id="complaints-table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Complaint Type</th>
+                    <th>Status</th> <!-- New column for status -->
+                    <th>Complaint</th>
+                    <th>Date of Complaint</th>
+                </tr>
+            </thead>
+            <tbody id="complaints-table-body">
+                <!-- Complaints will be dynamically added here -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Form for adding new complaints -->
+    <button id="toggle-add-complaint-section"> Add Complaint Section</button>
+    <section id="add-complaint-section" style="display: none;">
+        <h2>Add New Complaint</h2>
+        <form id="add-complaint-form">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" required><br>
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required><br>
+
+            <label for="complaint-type">Complaint Type:</label>
+            <select id="complaint-type" name="complaint-type">
+                <option value="Gender-based">Gender-based</option>
+                <option value="Age-based">Age-based</option>
+                <option value="Ethnicity-based">Ethnicity-based</option>
+                <option value="Religion-based">Religion-based</option>
+                <option value="Other">Other</option>
+            </select><br>
+
+            <label for="complaint">Complaint:</label>
+            <textarea id="complaint" name="complaint" required></textarea><br>
+
+            <label for="date-of-complaint">Date of Complaint:</label>
+            <input type="date" id="date-of-complaint" name="date-of-complaint" required><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <script>
+        // Dummy complaints data
+        let complaintsData = [
+            {
+                firstName: 'John',
+                lastName: 'Doe',
+                email: 'john@example.com',
+                phone: '1234567890',
+                complaint: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                complaintType: 'Gender-based Cyberbullying',
+                platform: 'Facebook',
+                country: 'USA',
+                dateOfComplaint: '2024-04-09',
+                status: 'Pending'
+            },
+            // Add more complaint objects as needed
+        ];
+
+        // Function to display complaints in the table
+        function displayComplaints() {
+            const complaintsTableBody = document.getElementById('complaints-table-body');
+            complaintsTableBody.innerHTML = '';
+
+            complaintsData.forEach((complaint, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+            <td>${complaint.firstName}</td>
+            <td>${complaint.lastName}</td>
+            <td>${complaint.email}</td>
+            <td>${complaint.phone}</td>
+            <td>${complaint.complaintType}</td>
+            <td>
+                <select class="status-dropdown" onchange="changeStatus(${index}, this)">
+                    <option value="Pending" ${complaint.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                    <option value="In Progress" ${complaint.status === 'In Progress' ? 'selected' : ''}>In Progress</option>
+                    <option value="Resolved" ${complaint.status === 'Resolved' ? 'selected' : ''}>Resolved</option>
+                    <option value="Investigation" ${complaint.status === 'Investigation' ? 'selected' : ''}>Investigation</option>
+                </select>
+            </td>
+            <td>${complaint.complaint}</td>
+            <td>${complaint.dateOfComplaint}</td>
+        `;
+                complaintsTableBody.appendChild(row);
+            });
+        }
+
+        // Function to change status
+        function changeStatus(index, selectElement) {
+            complaintsData[index].status = selectElement.value;
+        }
+
+        // Call function to display data
+        displayComplaints();
+        // Dummy cyberbullying counts data
+        const cyberbullyingTypeCounts = {
+            'Gender-based Cyberbullying': 50,
+            'Age-based Cyberbullying': 30,
+            'Ethnicity-based Cyberbullying': 20,
+            'Religion-based Cyberbullying': 10,
+            'Other Cyberbullying': 15
+        };
+
+        // Function to display cyberbullying type counts as cards
+        function displayCyberbullyingCounts() {
+            const cyberbullyingCountsContainer = document.getElementById('cyberbullying-counts-cards');
+            cyberbullyingCountsContainer.innerHTML = '';
+
+            for (const type in cyberbullyingTypeCounts) {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.innerHTML = `
+            <h3>${type}</h3>
+            <p>Total Count: ${cyberbullyingTypeCounts[type]}</p>
+        `;
+                cyberbullyingCountsContainer.appendChild(card);
+            }
+        }
+
+        // Call function to display cyberbullying counts
+        displayCyberbullyingCounts();
+
+        // Get references to the button and the add complaint section
+        const toggleButton = document.getElementById('toggle-add-complaint-section');
+        const addComplaintSection = document.getElementById('add-complaint-section');
+
+        // Add event listener to the button for toggling the section
+        toggleButton.addEventListener('click', function () {
+            // Toggle the display style of the add complaint section
+            if (addComplaintSection.style.display === 'none') {
+                addComplaintSection.style.display = 'block';
+            } else {
+                addComplaintSection.style.display = 'none';
+            }
+        });
+
+    </script>
+</body>
+
+</html>

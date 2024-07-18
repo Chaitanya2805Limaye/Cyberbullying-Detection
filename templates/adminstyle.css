@@ -1,0 +1,150 @@
+/* Add your CSS styles here */
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Header styles */
+header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Cyberbullying counts section styles */
+.cyberbullying-counts {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Complaints section styles */
+.complaints-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styles */
+#complaints-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#complaints-table th,
+#complaints-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#complaints-table th {
+    background-color: #f2f2f2;
+}
+
+/* Card styles */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+    flex: 1 0 calc(20% - 20px);
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+/* Complaints Table Styles */
+.complaints-section {
+    margin-top: 30px;
+}
+
+#complaints-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#complaints-table th, #complaints-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#complaints-table th {
+    background-color: #f2f2f2;
+}
+
+/* Form Styles */
+#add-complaint-section {
+    margin-top: 30px;
+}
+
+#add-complaint-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#add-complaint-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#add-complaint-form input[type="text"],
+#add-complaint-form input[type="email"],
+#add-complaint-form textarea,
+#add-complaint-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#add-complaint-form button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#add-complaint-form button:hover {
+    background-color: #2980b9;
+}
+#toggle-add-complaint-section {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#toggle-add-complaint-section:hover {
+    background-color: #2980b9;
+}
